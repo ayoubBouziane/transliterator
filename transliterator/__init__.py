@@ -7,7 +7,7 @@ flags = IGNORECASE|MULTILINE|UNICODE
 # if a word matches the pattern in the text it returns the word
 # if not, it returns an empty list
 def get_transliterations_from_text(string, from_, to_, text):
-    print "starting get_transliterations_from_text with", [string], "from", from_, "to", to_
+    print("starting get_transliterations_from_text with", [string], "from", from_, "to", to_)
     length_of_string = len(string)
     pattern_as_string = get_transliteration_as_pattern(string, from_, to_)
     transliterations = set()
@@ -15,14 +15,14 @@ def get_transliterations_from_text(string, from_, to_, text):
         if len(found) > 0.6 * len(string):
             transliterations.add(found)
     transliterations = list(transliterations)
-    print "finishing get_transliterations_from_text with", transliterations
+    print("finishing get_transliterations_from_text with", transliterations)
     return transliterations
 
 # PROBLEM: when word has too many optionally missed things
 # should probably make it so word length has to be at least a certain length
 
 def get_transliteration_as_pattern(string, from_, to_):
-    print '\nstarting get_transliteration_as_pattern with', [string], "from ", from_, "to", to_
+    print('\nstarting get_transliteration_as_pattern with', [string], "from ", from_, "to", to_)
 
     if isinstance(string, str):
         string = string.decode("utf-8")
@@ -32,7 +32,7 @@ def get_transliteration_as_pattern(string, from_, to_):
     to_ = to_.lower()
 
     char_to_variations = mappings[from_.lower() + "_to_" + to_.lower()]
-    print "char_to_variations is", char_to_variations
+    print("char_to_variations is", char_to_variations)
     pattern_as_string = ""
     for index_of_word, word in enumerate(words):
         if index_of_word != 0:
@@ -51,7 +51,7 @@ def get_transliteration_as_pattern(string, from_, to_):
         # sometimes n doesn't appear in arabic, so put it on the end just in case
         pattern_as_string += "(|n)"
 
-    print "pattern_as_string = ", [pattern_as_string]
+    print("pattern_as_string = ", [pattern_as_string])
     return pattern_as_string
 
 gtap = get_transliteration_as_pattern

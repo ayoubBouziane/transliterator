@@ -101,7 +101,7 @@ def get_transliteration_as_pattern(string, from_, to_):
     print('\nstarting get_transliteration_as_pattern with', [string], "from ", from_, "to", to_)
 
     if isinstance(string, str):
-        string = string.decode("utf-8")
+        string = str(string)
 
     words = string.lower().split()
     from_ = from_.lower()
